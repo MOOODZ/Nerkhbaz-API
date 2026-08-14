@@ -3,7 +3,7 @@ package ir.moodz.nerkhbazapi.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "nerkhbaz_update_state")
+@Document("nerkhbaz_update_state")
 public class ClientUpdateState {
     @Id
     private int id;
