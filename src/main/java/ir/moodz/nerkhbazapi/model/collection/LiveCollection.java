@@ -1,4 +1,4 @@
-package ir.moodz.nerkhbazapi.model;
+package ir.moodz.nerkhbazapi.model.collection;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,16 +6,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Instant;
 
 @Document(value = "live_currencies")
-public class LiveEntity {
+public class LiveCollection {
     @Id
     private String symbol;
-    private String price;
-    private Instant createdAt;
+    private final String price;
+    private final Instant createAt;
 
-    public LiveEntity(String symbol, String price, Instant createdAt) {
+    public LiveCollection(String symbol, String price, Instant createAt) {
         this.symbol = symbol;
         this.price = price;
-        this.createdAt = createdAt;
+        this.createAt = createAt;
     }
 
     public String getSymbol() {
@@ -26,7 +26,7 @@ public class LiveEntity {
         return price;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public Instant getCreateAt() {
+        return createAt;
     }
 }

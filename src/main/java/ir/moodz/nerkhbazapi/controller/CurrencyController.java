@@ -3,6 +3,8 @@ package ir.moodz.nerkhbazapi.controller;
 import ir.moodz.nerkhbazapi.domain.Currency;
 import ir.moodz.nerkhbazapi.mapper.CurrencyMapper;
 import ir.moodz.nerkhbazapi.service.CurrencyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @RequestMapping("/currencies")
 public class CurrencyController {
 
+    private final Logger log = LoggerFactory.getLogger(CurrencyController.class);
     private final CurrencyService service;
     private final CurrencyMapper mapper;
 

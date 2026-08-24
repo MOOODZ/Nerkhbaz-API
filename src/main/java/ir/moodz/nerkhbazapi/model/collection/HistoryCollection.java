@@ -1,24 +1,22 @@
-package ir.moodz.nerkhbazapi.model;
+package ir.moodz.nerkhbazapi.model.collection;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.time.Instant;
 
 @Document(value = "history_currencies")
-public class HistoryEntity {
+public class HistoryCollection {
     @Id
-    ObjectId id;
-    private String symbol;
-    private String price;
-    private Instant createdAt;
+    private ObjectId id = ObjectId.get();
+    private final String symbol;
+    private final String price;
+    private final Instant createAt;
 
-    public HistoryEntity(String symbol, String price, Instant createdAt) {
-        this.id = ObjectId.get();
+    public HistoryCollection(String symbol, String price, Instant createAt) {
         this.symbol = symbol;
         this.price = price;
-        this.createdAt = createdAt;
+        this.createAt = createAt;
     }
 
     public String getSymbol() {
@@ -29,7 +27,7 @@ public class HistoryEntity {
         return price;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public Instant getCreateAt() {
+        return createAt;
     }
 }
