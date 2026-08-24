@@ -1,10 +1,10 @@
 package ir.moodz.nerkhbazapi.service;
 
 import ir.moodz.nerkhbazapi.domain.Currency;
-import ir.moodz.nerkhbazapi.mapper.CurrencyMapper;
+import ir.moodz.nerkhbazapi.database.mapper.CurrencyMapper;
 import ir.moodz.nerkhbazapi.remote.client.MarketClient;
-import ir.moodz.nerkhbazapi.model.collection.HistoryCollection;
-import ir.moodz.nerkhbazapi.model.collection.LiveCollection;
+import ir.moodz.nerkhbazapi.database.model.HistoryCollection;
+import ir.moodz.nerkhbazapi.database.model.LiveCollection;
 import ir.moodz.nerkhbazapi.repository.HistoryRepository;
 import ir.moodz.nerkhbazapi.repository.LiveRepository;
 import org.slf4j.Logger;

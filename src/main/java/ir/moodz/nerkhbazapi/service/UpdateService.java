@@ -1,6 +1,6 @@
 package ir.moodz.nerkhbazapi.service;
 
-import ir.moodz.nerkhbazapi.model.collection.ClientUpdateStateCollection;
+import ir.moodz.nerkhbazapi.database.model.ClientUpdateStateCollection;
 import ir.moodz.nerkhbazapi.repository.ClientUpdateStateRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

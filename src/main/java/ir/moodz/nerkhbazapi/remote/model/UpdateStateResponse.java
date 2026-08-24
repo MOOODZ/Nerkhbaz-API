@@ -1,4 +1,4 @@
-package ir.moodz.nerkhbazapi.model.dto;
+package ir.moodz.nerkhbazapi.remote.model;
 
 public class UpdateStateResponse{
         private final boolean isUpdateNeeded;

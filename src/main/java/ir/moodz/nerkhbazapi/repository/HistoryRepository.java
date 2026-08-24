@@ -1,6 +1,6 @@
 package ir.moodz.nerkhbazapi.repository;
 
-import ir.moodz.nerkhbazapi.model.collection.HistoryCollection;
+import ir.moodz.nerkhbazapi.database.model.HistoryCollection;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 

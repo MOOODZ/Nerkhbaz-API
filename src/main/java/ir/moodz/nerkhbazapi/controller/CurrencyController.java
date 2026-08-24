@@ -1,7 +1,7 @@
 package ir.moodz.nerkhbazapi.controller;
 
 import ir.moodz.nerkhbazapi.domain.Currency;
-import ir.moodz.nerkhbazapi.mapper.CurrencyMapper;
+import ir.moodz.nerkhbazapi.database.mapper.CurrencyMapper;
 import ir.moodz.nerkhbazapi.service.CurrencyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

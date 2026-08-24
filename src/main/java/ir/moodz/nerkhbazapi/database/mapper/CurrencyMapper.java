@@ -1,8 +1,8 @@
-package ir.moodz.nerkhbazapi.mapper;
+package ir.moodz.nerkhbazapi.database.mapper;
 
 import ir.moodz.nerkhbazapi.domain.Currency;
-import ir.moodz.nerkhbazapi.model.collection.HistoryCollection;
-import ir.moodz.nerkhbazapi.model.collection.LiveCollection;
+import ir.moodz.nerkhbazapi.database.model.HistoryCollection;
+import ir.moodz.nerkhbazapi.database.model.LiveCollection;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

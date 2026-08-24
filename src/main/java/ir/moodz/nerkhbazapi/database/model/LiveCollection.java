@@ -1,4 +1,4 @@
-package ir.moodz.nerkhbazapi.model.collection;
+package ir.moodz.nerkhbazapi.database.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
