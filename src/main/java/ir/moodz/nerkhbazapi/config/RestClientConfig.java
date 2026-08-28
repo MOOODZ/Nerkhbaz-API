@@ -1,4 +1,4 @@
-package ir.moodz.nerkhbazapi.remote.client.config;
+package ir.moodz.nerkhbazapi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

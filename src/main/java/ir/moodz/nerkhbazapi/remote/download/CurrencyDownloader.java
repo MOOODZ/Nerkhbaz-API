@@ -6,6 +6,6 @@ import ir.moodz.nerkhbazapi.domain.CurrencySymbol;
 import java.util.List;
 import java.util.Map;
 
-public interface CurrencyDownload {
+public interface CurrencyDownloader {
     List<Currency> fetch(String url, Map<CurrencySymbol, String> suffix);
 }

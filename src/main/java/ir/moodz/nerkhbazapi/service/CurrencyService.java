@@ -1,15 +1,17 @@
 package ir.moodz.nerkhbazapi.service;
 
-import ir.moodz.nerkhbazapi.domain.Currency;
 import ir.moodz.nerkhbazapi.database.mapper.CurrencyMapper;
-import ir.moodz.nerkhbazapi.remote.client.MarketClient;
 import ir.moodz.nerkhbazapi.database.model.HistoryCollection;
 import ir.moodz.nerkhbazapi.database.model.LiveCollection;
+import ir.moodz.nerkhbazapi.domain.Currency;
+import ir.moodz.nerkhbazapi.remote.client.MarketClient;
 import ir.moodz.nerkhbazapi.repository.HistoryRepository;
 import ir.moodz.nerkhbazapi.repository.LiveRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -37,13 +39,15 @@ public class CurrencyService {
     }
 
     @Scheduled(
-            cron = "0 0 11-23/3 * * SAT,THU,SUN,MON,TUE,WED",
+            cron = "0 0 11-23/3 * * SAT,SUN,MON,TUE,WED,THU",
             zone = "Asia/Tehran"
     )
-    public void fetchCurrencies() {
+    @CachePut(value = "liveCurrencies")
+    public List<Currency> fetchCurrencies() {
         List<Currency> currencies =  marketClient.fetchCurrencies();
         List<LiveCollection> liveCollectionCurrencies = mapper.asLiveEntities(currencies);
         liveRepository.saveAll(liveCollectionCurrencies);
+        return currencies;
     }
 
     @Scheduled(
@@ -56,11 +60,12 @@ public class CurrencyService {
         historyRepository.saveAll(historyEntities);
     }
 
-    public List<LiveCollection> getCurrencies() {
-        return liveRepository.findAll();
+    @Cacheable("liveCurrencies")
+    public List<Currency> getCurrencies() {
+        return mapper.asDomainFromLive(liveRepository.findAll());
     }
 
-    public List<HistoryCollection> get30DaysHistoryBySymbol(String symbol) {
-        return historyRepository.findTop30BySymbolOrderByCreateAtDesc(symbol);
+    public List<Currency> get30DaysHistoryBySymbol(String symbol) {
+        return mapper.asDomainFromHistory(historyRepository.findTop30BySymbolOrderByCreateAtDesc(symbol));
     }
 }

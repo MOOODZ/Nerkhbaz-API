@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class JsoupCurrencyDownloader implements CurrencyDownload {
+public class JsoupCurrencyDownloader implements CurrencyDownloader {
 
     private final Logger log = LoggerFactory.getLogger(JsoupCurrencyDownloader.class);
     private static final String USER_AGENT = "Nerkhbaz/2.0";

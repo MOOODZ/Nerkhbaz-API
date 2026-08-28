@@ -2,7 +2,7 @@ package ir.moodz.nerkhbazapi.remote.client;
 
 import ir.moodz.nerkhbazapi.domain.Currency;
 import ir.moodz.nerkhbazapi.domain.CurrencySymbol;
-import ir.moodz.nerkhbazapi.remote.download.CurrencyDownload;
+import ir.moodz.nerkhbazapi.remote.download.CurrencyDownloader;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import java.util.Map;
 @Component("tgjuClient")
 public class TgjuMarketClient implements MarketClient {
 
-    private final CurrencyDownload downloader;
+    private final CurrencyDownloader downloader;
 
-    public TgjuMarketClient(CurrencyDownload downloader) {
+    public TgjuMarketClient(CurrencyDownloader downloader) {
         this.downloader = downloader;
     }
 
