@@ -10,8 +10,6 @@ import ir.moodz.nerkhbazapi.repository.LiveRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +40,6 @@ public class CurrencyService {
             cron = "0 0 11-23/3 * * SAT,SUN,MON,TUE,WED,THU",
             zone = "Asia/Tehran"
     )
-    @CachePut(value = "liveCurrencies")
     public List<Currency> fetchCurrencies() {
         List<Currency> currencies =  marketClient.fetchCurrencies();
         List<LiveCollection> liveCollectionCurrencies = mapper.asLiveEntities(currencies);
@@ -60,7 +57,6 @@ public class CurrencyService {
         historyRepository.saveAll(historyEntities);
     }
 
-    @Cacheable("liveCurrencies")
     public List<Currency> getCurrencies() {
         return mapper.asDomainFromLive(liveRepository.findAll());
     }

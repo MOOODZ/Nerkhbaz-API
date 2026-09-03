@@ -8,7 +8,7 @@ services:
     container_name: nerkhbaz-api
 
     depends_on:
-      - redis
+      - mongodb
 
     ports:
       - "23959:25414"
@@ -17,19 +17,25 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
       NAVASAN_API_KEY: ${NAVASAN_API_KEY}
+      TZ: Asia/Tehran
 
     restart: unless-stopped
 
-  redis:
-    image: redis:latest
-    container_name: nerkhbaz-redis
+  mongodb:
+    image: mongo:4.4
+    container_name: nerkhbaz-mongodb
+
+    ports:
+      - "65030:27017"
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
 
     volumes:
-      - redis_data:/data
-
-    command: redis-server --appendonly yes
+      - mongodb_data:/data/db
 
     restart: unless-stopped
 
 volumes:
-  redis_data:
+  mongodb_data:
